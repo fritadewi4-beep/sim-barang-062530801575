@@ -162,3 +162,37 @@ footer {
         grid-template-columns: 1fr;
     }
 }
+
+/* Kolom pencarian */
+#cari {
+    margin-bottom: 12px;
+}
+
+/* Notifikasi toast */
+.toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    max-width: 90%;
+    padding: 12px 20px;
+    border-radius: 8px;
+    color: #fff;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s, transform 0.3s;
+    z-index: 100;
+}
+
+.toast.tampil {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+.toast.sukses {
+    background: #2e7d32;
+}
+
+.toast.error {
+    background: #c62828;
+}
