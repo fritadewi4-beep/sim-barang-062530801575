@@ -51,6 +51,8 @@ if (form) {
 
         // Lolos validasi
         tampilkanToast("Data barang berhasil divalidasi!", "sukses");
-        form.reset();
+        setTimeout(function ()) {
+            form.sumbit();
+        }, 800);
     });
 }
