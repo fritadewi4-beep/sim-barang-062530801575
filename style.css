@@ -1,0 +1,164 @@
+/* Box Model */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bg: #f3faf4;
+    --teks: #1f3a2a;
+    --hijau: #e3f4e6;
+    --hijau-muda: #cfead4;
+    --hijau-nav: #a8d5b5;
+    --hijau-hover: #8cc7a0;
+    --garis: #c5e3cd;
+    --tombol: #3a8559;
+    --tombol-hover: #2d6b46;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: var(--bg);
+    color: var(--teks);
+    line-height: 1.5;
+}
+
+/* Header dan Navigasi (Flexbox), tampilan mobile dulu */
+header {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 16px;
+    background: var(--hijau);
+    color: var(--teks);
+    border-bottom: 4px solid var(--hijau-nav);
+}
+
+nav {
+    display: flex;
+    gap: 16px;
+    background: var(--hijau-nav);
+    padding: 0 16px;
+}
+
+nav a {
+    display: block;
+    padding: 12px 8px;
+    color: var(--teks);
+    text-decoration: none;
+}
+
+nav a:hover {
+    background: var(--hijau-hover);
+}
+
+/* Tata letak utama (Grid) */
+main {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 16px;
+}
+
+section {
+    background: #fff;
+    border: 1px solid var(--garis);
+    border-radius: 8px;
+    padding: 16px;
+}
+
+h2 {
+    margin-bottom: 12px;
+    font-size: 1.2rem;
+}
+
+/* Tabel */
+#inventaris {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid var(--garis);
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background: var(--hijau-muda);
+}
+
+/* Formulir (Grid) */
+form {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+}
+
+label {
+    font-weight: bold;
+}
+
+input, select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 4px;
+    border: 1px solid #a9d3b6;
+    border-radius: 4px;
+}
+
+button {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background: var(--tombol);
+    color: #fff;
+    cursor: pointer;
+}
+
+button:hover {
+    background: var(--tombol-hover);
+}
+
+footer {
+    padding: 16px;
+    text-align: center;
+    background: var(--hijau-nav);
+    color: var(--teks);
+}
+
+/* Tablet: 600px sampai 1024px */
+@media (min-width: 600px) {
+    header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    form {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    form button {
+        grid-column: 1 / -1;
+    }
+}
+
+/* Desktop: lebih dari 1024px */
+@media (min-width: 1025px) {
+    main {
+        grid-template-columns: 2fr 1fr;
+        max-width: 1200px;
+        margin: 0 auto;
+        align-items: start;
+    }
+
+    form {
+        grid-template-columns: 1fr;
+    }
+}
