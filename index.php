@@ -7,6 +7,17 @@ if (!isset($_SESSION["is_logged_in"]) || $_SESSION["is_logged_in"] !== true) {
     exit;
 }
 ?>
+
+<?php
+require "koneksi.php";
+
+$sql = "SELECT b.kode_barang, b.nama_barang, k.nama_kategori, b.jumlah, b.kondisi
+        FROM barang b
+        JOIN kategori k ON b.kategori_id = k.id
+        ORDER BY b.kode_barang";
+$data = $pdo->query($sql)->fetchAll();
+?>
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -48,27 +59,15 @@ if (!isset($_SESSION["is_logged_in"]) || $_SESSION["is_logged_in"] !== true) {
                     </tr>
                 </thead>
                 <tbody>
+                <?php foreach ($data as $row): ?>
                     <tr>
-                        <td>BRG-001</td>
-                        <td>Proyektor</td>
-                        <td>Elektronik</td>
-                        <td>5</td>
-                        <td>Baik</td>
+                        <td><?= htmlspecialchars($row['kode_barang']) ?></td>
+                        <td><?= htmlspecialchars($row['nama_barang']) ?></td>
+                        <td><?= htmlspecialchars($row['nama_kategori']) ?></td>
+                        <td><?= htmlspecialchars($row['jumlah']) ?></td>
+                        <td><?= htmlspecialchars($row['kondisi']) ?></td>
                     </tr>
-                    <tr>
-                        <td>BRG-002</td>
-                        <td>Meja Lab</td>
-                        <td>Furnitur</td>
-                        <td>20</td>
-                        <td>Baik</td>
-                    </tr>
-                    <tr>
-                        <td>BRG-003</td>
-                        <td>Komputer</td>
-                        <td>Elektronik</td>
-                        <td>30</td>
-                        <td>Rusak Ringan</td>
-                    </tr>
+                <?php endforeach; ?>
                 </tbody>
             </table>
         </section>
@@ -113,7 +112,7 @@ if (!isset($_SESSION["is_logged_in"]) || $_SESSION["is_logged_in"] !== true) {
     <script src="main.js"></script>
 
     <footer>
-        <p>&copy; 2026 SIM-Barang | Afrita Mukti Sari dewi | 062530801575 | 3IB</p>
+        <p>&copy; 2026 SIM-Barang | Afrita Mukti Sari Dewi | 062530801575 | 3IB</p>
     </footer>
 </body>
 </html>
